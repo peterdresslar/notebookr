@@ -10,8 +10,6 @@ I was tired of running the same setup process over and over with notebooks that 
 
 I complained to claude-3.5-sonnet about that, and here we are. 
 
-> Claude: "three times in this chat you complained, but whoʻs counting? I thought it would be faster to write the library."
-
 Using notebookr you can typically cut that setup process down to a very short workflow:
 
 1. Receive and save python notebook (.ipynb) file into a working directory
@@ -22,7 +20,7 @@ Using notebookr you can typically cut that setup process down to a very short wo
 Once your code editor opens, depening on your workflow, youʻll probably want to open the terminal (ctrl-`) and enter either
 
 5. `source .venv/bin/activate` 
-#     * OR *
+ - or -
 5w. `.venv\Scripts\activate` # windows
 
 ## Installation
