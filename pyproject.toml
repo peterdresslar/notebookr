@@ -9,13 +9,10 @@ authors = [
   { name="Peter Dresslar", email="peterdresslar@gmail.com" },
 ]
 description = "Setup development environment for Jupyter notebooks using UV"
+keywords = ["jupyter", "notebook", "development", "uv", "virtualenv", "python", "academic", "research"]
 readme = "README.md"
 requires-python = ">=3.7"
-license = "MIT"
-keywords = ["jupyter", "notebook", "development", "uv", "virtualenv", "python", "academic", "research"]
 classifiers = [
-    "Development Status :: 3 - Alpha",
-    "Intended Audience :: Developers",
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
