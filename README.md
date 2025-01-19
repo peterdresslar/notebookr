@@ -19,6 +19,11 @@ Using notebookr you can typically cut that setup process down to a very short wo
 3. `notebookr SomeNotebookYouGot.ipynb`
 4. `code some-notebook-you-got`
 
+Once your code editor opens, depening on your workflow, youʻll probably want to open the terminal (ctrl-`) and enter either
+
+5. `source .venv/bin/activate` 
+#     * OR *
+5w. `.venv\Scripts\activate` # windows
 
 ## Installation
 
