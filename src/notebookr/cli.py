@@ -3,6 +3,7 @@ import json
 import subprocess
 import os
 import sys
+import argparse
 from pathlib import Path
 
 def ensure_uv():
@@ -13,7 +14,7 @@ def ensure_uv():
         print("Installing UV...")
         subprocess.run(['pip', 'install', 'uv'])
 
-def setup_notebook_project(notebook_path):
+def setup_notebook_project(notebook_path, create_py=False):
     """Set up a development environment for a Jupyter notebook."""
     
     ensure_uv()
@@ -85,6 +86,11 @@ __pycache__/
     # Install requirements using UV
     subprocess.run(['uv', 'pip', 'install', '-r', 'requirements.txt'])
     
+    # After copying the notebook, convert to Python if requested
+    if create_py:
+        print("Converting notebook to Python...")
+        subprocess.run(['jupyter', 'nbconvert', '--to', 'python', nb_path.name])
+    
     # Final success message
     print(f"\n✨ Project setup complete! ✨") # noqa ... come on ruff thereʻs sparkles
     print(f"\nYour notebook environment is ready at: {project_dir}")
@@ -94,8 +100,9 @@ __pycache__/
     print("  # or open with your preferred editor\n")
 
 def main():
-    if len(sys.argv) != 2:
-        print("Usage: notebookr path/to/notebook.ipynb")
-        sys.exit(1)
+    parser = argparse.ArgumentParser(description='Set up a development environment for a Jupyter notebook.')
+    parser.add_argument('notebook', help='Path to the notebook file')
+    parser.add_argument('--with_py', action='store_true', help='Also create a Python file from the notebook using nbconvert')
+    args = parser.parse_args()
     
-    setup_notebook_project(sys.argv[1])
+    setup_notebook_project(args.notebook, create_py=args.with_py)

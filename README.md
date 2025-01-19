@@ -39,9 +39,16 @@ uv add notebookr
 notebookr path/to/your/notebook.ipynb
 ```
 
+```bash
+notebookr --with_py path/to/your/notebook.ipynb # Also creates a python copy of the notebook
+```
+
 This will:
 1. Create a virtual environment
 2. Generate requirements.txt based on imports in your notebook
 3. Create a .gitignore
 4. Initialize a git repository
 5. Install required packages
+
+# Version
+0.1.1 added `--with_py`
