@@ -6,16 +6,24 @@ build-backend = "hatchling.build"
 name = "notebookr"
 version = "0.1.0"
 authors = [
-  { name="Peter Dresslar", email="your.email@example.com" },
+  { name="Peter Dresslar", email="peterdresslar@gmail.com" },
 ]
-description = "Setup development environment for Jupyter notebooks"
+description = "Setup development environment for Jupyter notebooks using UV"
 readme = "README.md"
 requires-python = ">=3.7"
+license = "MIT"
+keywords = ["jupyter", "notebook", "development", "uv", "virtualenv", "python", "academic", "research"]
 classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
+
+[project.urls]
+"Homepage" = "https://github.com/peterdresslar/notebookr"
+"Bug Tracker" = "https://github.com/peterdresslar/notebookr/issues"
 
 [project.scripts]
 notebookr = "notebookr.cli:main"
