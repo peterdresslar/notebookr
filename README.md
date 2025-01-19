@@ -1,4 +1,4 @@
-# notebook-setup
+# notebookr
 
 A simple tool to set up development environments for Jupyter notebooks.
 

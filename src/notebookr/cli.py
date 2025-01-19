@@ -64,7 +64,7 @@ __pycache__/
 
 def main():
     if len(sys.argv) != 2:
-        print("Usage: notebook-setup path/to/notebook.ipynb")
+        print("Usage: notebookr path/to/notebook.ipynb")
         sys.exit(1)
     
     setup_notebook_project(sys.argv[1])

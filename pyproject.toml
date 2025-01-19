@@ -18,4 +18,4 @@ classifiers = [
 ]
 
 [project.scripts]
-notebook-setup = "notebookr.cli:main"
+notebookr = "notebookr.cli:main"
