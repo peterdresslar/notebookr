@@ -17,9 +17,27 @@ def setup_notebook_project(notebook_path):
     """Set up a development environment for a Jupyter notebook."""
     
     ensure_uv()
+
+    # Convert notebook path to Path object
+    nb_path = Path(notebook_path).resolve()  # resolve() gets absolute path
     
-    # Read the notebook to extract imports
-    with open(notebook_path, 'r') as f:
+    # Create project directory name from notebook name (dash-case)
+    project_name = nb_path.stem.lower().replace(' ', '-')
+    project_dir = Path(project_name)
+    
+    # Create project directory
+    project_dir.mkdir(exist_ok=True)
+    project_dir = project_dir.resolve()  # get absolute path for final message
+    
+    # Copy notebook to project directory
+    import shutil
+    shutil.copy2(notebook_path, project_dir / nb_path.name)
+    
+    # Change to project directory
+    os.chdir(project_dir)
+    
+    # Rest of your existing code here, starting with reading the notebook
+    with open(nb_path.name, 'r') as f:
         notebook = json.load(f)
     
     # Extract import statements from code cells
@@ -37,6 +55,8 @@ def setup_notebook_project(notebook_path):
     # Create requirements.txt
     with open('requirements.txt', 'w') as f:
         f.write('jupyter\n')  # Always include jupyter
+        f.write('ipywidgets\n')  # Always include ipywidgets. 
+        ### hello reader, you could add your own packages here!
         for package in imports:
             if package not in ['os', 'sys', 'math']:  # Skip standard library
                 f.write(f'{package}\n')
@@ -61,6 +81,14 @@ __pycache__/
     
     # Install requirements using UV
     subprocess.run(['uv', 'pip', 'install', '-r', 'requirements.txt'])
+    
+    # Final success message
+    print(f"\n✨ Project setup complete! ✨") # noqa ... come on ruff thereʻs sparkles
+    print(f"\nYour notebook environment is ready at: {project_dir}")
+    print("\nNext steps:")
+    print(f"  cd {project_name}")
+    print("  code .  # If using VSCode")
+    print("  # or open with your preferred editor\n")
 
 def main():
     if len(sys.argv) != 2:

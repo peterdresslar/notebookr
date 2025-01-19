@@ -1,6 +1,18 @@
 # notebookr
 
-A simple tool to set up development environments for Jupyter notebooks.
+A simple tool to set up development environments for Jupyter notebooks. My motivation: basically, Jupyter notebooks are about the only program type for which it is *still* generally practiced to distribute the code through email or file sharing. 
+
+I was tired of running the same setup process over and over with notebooks that are usually emailed to me. I work in IDEs, usually Cursor and sometimes VSCode, and naturally also work with git.
+
+I complained to claude-3.5-sonnet about that, and here we are.
+
+Using notebookr you can typically cut that setup process down to a very short workflow:
+
+1. Receive and save python notebook (.ipynb) file into a working directory
+2. Open a terminal
+3. `notebookr SomeNotebookYouGot.ipynb`
+4. `code some-notebook-you-got`
+
 
 ## Installation
 
@@ -9,6 +21,13 @@ A simple tool to set up development environments for Jupyter notebooks.
 pip install notebookr
 
 `
+# or
+
+```bash
+
+uv add notebookr
+
+```
 
 ## Usage
 
