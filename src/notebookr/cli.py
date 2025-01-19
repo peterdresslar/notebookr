@@ -22,7 +22,10 @@ def setup_notebook_project(notebook_path):
     nb_path = Path(notebook_path).resolve()  # resolve() gets absolute path
     
     # Create project directory name from notebook name (dash-case)
-    project_name = nb_path.stem.lower().replace(' ', '-')
+    # Handle camelCase/PascalCase by adding dash before capital letters
+    project_name = nb_path.stem
+    project_name = ''.join(['-'+c.lower() if c.isupper() else c for c in project_name]).lstrip('-')
+    project_name = project_name.replace(' ', '-')
     project_dir = Path(project_name)
     
     # Create project directory
