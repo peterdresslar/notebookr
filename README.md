@@ -20,10 +20,10 @@ Using notebookr you can typically cut that setup process down to a very short wo
 Once your code editor opens, depening on your workflow, youʻll probably want to open the terminal (ctrl-`) and enter either
 
 5. `source .venv/bin/activate` 
- - or -
-5w. `.venv\Scripts\activate` # windows
+... or:
+6. `.venv\Scripts\activate` # windows
 
-## Installation
+# Installation
 
 ```bash
 pip install notebookr
@@ -33,7 +33,7 @@ pip install notebookr
 uv add notebookr
 ```
 
-## Usage
+# Usage
 
 ```bash
 notebookr path/to/your/notebook.ipynb
