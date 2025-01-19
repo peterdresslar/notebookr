@@ -1,5 +1,9 @@
 # notebookr
 
+[![PyPI version](https://badge.fury.io/py/notebookr.svg)](https://badge.fury.io/py/notebookr)
+[![Python](https://img.shields.io/pypi/pyversions/notebookr.svg)](https://pypi.org/project/notebookr/)
+[![Downloads](https://static.pepy.tech/badge/notebookr)](https://pepy.tech/project/notebookr)
+
 A simple tool to set up development environments for Jupyter notebooks. My motivation: basically, Jupyter notebooks are about the only program type for which it is *still* generally practiced to distribute the code through email or file sharing. 
 
 I was tired of running the same setup process over and over with notebooks that are usually emailed to me. I work in IDEs, usually Cursor and sometimes VSCode, and naturally also work with git.
