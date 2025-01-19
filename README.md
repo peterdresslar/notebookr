@@ -4,7 +4,9 @@ A simple tool to set up development environments for Jupyter notebooks. My motiv
 
 I was tired of running the same setup process over and over with notebooks that are usually emailed to me. I work in IDEs, usually Cursor and sometimes VSCode, and naturally also work with git.
 
-I complained to claude-3.5-sonnet about that, and here we are.
+I complained to claude-3.5-sonnet about that, and here we are. 
+
+> Claude: "three times in this chat you complained, but whoʻs counting? I thought it would be faster to write the library."
 
 Using notebookr you can typically cut that setup process down to a very short workflow:
 
@@ -17,25 +19,18 @@ Using notebookr you can typically cut that setup process down to a very short wo
 ## Installation
 
 ```bash
-
 pip install notebookr
-
-`
+```
 # or
-
 ```bash
-
 uv add notebookr
-
 ```
 
 ## Usage
 
 ```bash
-
 notebookr path/to/your/notebook.ipynb
-
-`
+```
 
 This will:
 1. Create a virtual environment
