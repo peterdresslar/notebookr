@@ -4,24 +4,31 @@
 [![Python](https://img.shields.io/pypi/pyversions/notebookr.svg)](https://pypi.org/project/notebookr/)
 [![Downloads](https://static.pepy.tech/badge/notebookr)](https://pepy.tech/project/notebookr)
 
-A simple tool to set up development environments for Jupyter notebooks. My motivation: basically, Jupyter notebooks are about the only program type for which it is *still* generally practiced to distribute the code through email or file sharing. 
+A simple tool to set up development environments for Jupyter notebooks. My motivation: people frequently email or file-share Jupyter notebooks, which generally short-circuits my normal flow for recieving, working with, and managing code (usually via GitHub). So, whatʻs the fastest, easiest way to get these loose notebooks into flow?
 
-I was tired of running the same setup process over and over with notebooks that are usually emailed to me. I work in IDEs, usually Cursor and sometimes VSCode, and naturally also work with git.
+Using notebookr you can typically cut the setup process down to a very short workflow:
 
-I complained to claude-3.5-sonnet about that, and here we are. 
-
-Using notebookr you can typically cut that setup process down to a very short workflow:
-
-1. Receive and save python notebook (.ipynb) file into a working directory
+1. Receive and save Python notebook (.ipynb) file into a working directory
 2. Open a terminal
-3. `notebookr SomeNotebookYouGot.ipynb`
-4. `code some-notebook-you-got`
+3. `notebookr SomeNotebook.ipynb`
 
-Once your code editor opens, depening on your workflow, youʻll probably want to open the terminal (ctrl-`) and enter either
+The package runs and creates a project folder with your notebook. At this point, if you are using an IDE, you might:
 
+4. `code some-notebook`
 5. `source .venv/bin/activate` 
 ... or:
 6. `.venv\Scripts\activate` # windows
+
+- or - if you are using Jupyter
+
+4. `jupyter lab --notebook-dir=some-notebook`
+
+Notebookr will give you
+- A git-initialized, uv-initialized project folder with a name based on the notebook name
+- The uv virtual environment at `.venv/`, ready to be activated.
+- A simple .gitignore with common patterns, including especially that .venv pattern
+- A `pyproject.toml` or `requirements.txt` (optional) file with dependencies read in from the notebook.
+- A `notebooks/` folder with your notebook safely tucked away.
 
 # Installation
 
