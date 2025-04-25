@@ -4,7 +4,7 @@
 [![Python](https://img.shields.io/pypi/pyversions/notebookr.svg)](https://pypi.org/project/notebookr/)
 [![Downloads](https://static.pepy.tech/badge/notebookr)](https://pepy.tech/project/notebookr)
 
-A simple tool to set up development environments for Jupyter notebooks. My motivation: people frequently email or file-share Jupyter notebooks, which generally short-circuits my normal flow for recieving, working with, and managing code (usually via GitHub). So, whatʻs the fastest, easiest way to get these loose notebooks into flow?
+A simple tool to set up development environments for Jupyter notebooks. My motivation: people frequently email or file-share Jupyter notebooks, which generally short-circuits my normal flow for receiving, working with, and managing code (usually via GitHub). So, whatʻs the fastest, easiest way to get these loose notebooks into flow?
 
 Using notebookr you can typically cut the setup process down to a very short workflow:
 
