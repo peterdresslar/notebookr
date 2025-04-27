@@ -1,6 +1,6 @@
 """Setup development environments for Jupyter notebooks using UV."""
 
-__version__ = "0.1.3"
+__version__ = "0.1.4"
 
 from .cli import setup_notebook_project
 

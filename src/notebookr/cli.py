@@ -1,4 +1,7 @@
+# notebookr.py
 #!/usr/bin/env python3
+
+
 import json
 import subprocess
 import os
@@ -10,6 +13,27 @@ from pathlib import Path
 
 def ensure_uv() -> bool:
     return shutil.which("uv") is not None
+
+def setup_directories(notebook_path: Path) -> None:
+    """Create the project directory and copy the notebook."""
+    # Create project directory name from notebook name (dash-case)
+    # Handle camelCase/PascalCase by adding dash before capital letters
+    project_name = notebook_path.stem
+    project_name = ''.join(['-'+c.lower() if c.isupper() else c for c in project_name]).lstrip('-')  # change any name to dash-case
+    project_name = project_name.replace(' ', '-') # no spaces
+    project_dir = Path(project_name)
+    
+    project_dir.mkdir(exist_ok=True)
+    project_dir = project_dir.resolve()  # get absolute path for final message
+
+    notebooks_dir = project_dir / 'notebooks'
+    # go ahead and make the notebooks directory
+    notebooks_dir.mkdir(exist_ok=True)
+    
+    # copy the notebook into the notebooks directory
+    shutil.copy2(notebook_path, notebooks_dir / notebook_path.name)
+    
+    return project_name, project_dir, notebooks_dir
 
 def create_venv(venv_dir: Path) -> list[str]:
     # need to create a virtual environment
@@ -27,26 +51,11 @@ def install_requirements(pip_cmd: list[str], requirements_path: Path) -> None:
 def setup_notebook_project(notebook_path, create_py=False):
     """Set up a development environment for a Jupyter notebook."""
     
-    ensure_uv()
+    has_uv = ensure_uv()
 
     nb_path = Path(notebook_path).resolve()  # resolve() gets absolute path
-    
-    # Create project directory name from notebook name (dash-case)
-    # Handle camelCase/PascalCase by adding dash before capital letters
-    project_name = nb_path.stem
-    project_name = ''.join(['-'+c.lower() if c.isupper() else c for c in project_name]).lstrip('-')
-    project_name = project_name.replace(' ', '-')
-    project_dir = Path(project_name)
-    
-    project_dir.mkdir(exist_ok=True)
-    project_dir = project_dir.resolve()  # get absolute path for final message
-
-    notebooks_dir = project_dir / 'notebooks'
-    # go ahead and make the notebooks directory
-    notebooks_dir.mkdir(exist_ok=True)
-    
-    # copy the notebook into the notebooks directory
-    shutil.copy2(notebook_path, notebooks_dir / nb_path.name)
+    resolved_nb_path = nb_path.resolve()
+    project_name, project_dir, notebooks_dir = setup_directories(resolved_nb_path)
     
     os.chdir(project_dir)
     
