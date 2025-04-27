@@ -67,9 +67,7 @@ def setup_notebook_project(notebook_path, create_py=False):
     
     #requirements.txt
     with open('requirements.txt', 'w') as f:
-        f.write('jupyter\n')  # Always include jupyter
         f.write('ipykernel\n')  # Always include ipykernel
-        f.write('ipywidgets\n')  # Always include ipywidgets. 
         ### hello reader, you could add your own packages here!
         for package in imports:
             if package not in ['os', 'sys', 'math']:  # Skip standard library
