@@ -71,8 +71,11 @@ def setup_notebook_project(notebook_path, create_py=False):
                 if line.startswith('import ') or line.startswith('from '):
                     imports.add(line.split()[1].split('.')[0])
     
-    # virtual environment using UV
-    subprocess.run(['uv', 'venv'])
+    # if uv is not installed note to the user that we are skipping the step
+    if not has_uv:
+        print("Note: uv is not installed, skipping the step to create a virtual environment.")
+    else:
+        create_venv(project_dir / '.venv')
     
     #requirements.txt
     with open('requirements.txt', 'w') as f:
@@ -99,19 +102,18 @@ __pycache__/
     if not os.path.exists('.git'):
         subprocess.run(['git', 'init'])
     
-    subprocess.run(['uv', 'pip', 'install', '-r', 'requirements.txt'])
+    if has_uv:
+        subprocess.run(['uv', 'pip', 'install', '-r', 'requirements.txt'])
+    else:
+        subprocess.run([sys.executable, '-m', 'pip', 'install', '-r', 'requirements.txt'])
     
     if create_py:
         print("Converting notebook to Python...")
         subprocess.run(['jupyter', 'nbconvert', '--to', 'python', nb_path.name])
     
-    print(f"\n✨ Project setup complete! ✨") # noqa ... come on ruff thereʻs sparkles
+    print(f"\n✨ Project setup complete! ✨") # noqa ... come on ruff thereʻre sparkles
     print(f"\nYour notebook environment is ready at: {project_dir}")
-    print("\nNext steps:")
-    print(f"  cd {project_name}")
-    print("  code .  # If using VSCode")
-    print("  # or open with your preferred editor\n")
-
+    
 def main():
     parser = argparse.ArgumentParser(description='Set up a development environment for a Jupyter notebook.')
     parser.add_argument('notebook', help='Path to the notebook file')
