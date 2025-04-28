@@ -26,3 +26,8 @@ dependencies = [
 
 [project.scripts]
 notebookr = "notebookr.cli:main"
+
+[dependency-groups]
+dev = [
+    "twine>=4.0.2",
+]
